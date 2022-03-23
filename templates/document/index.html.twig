@@ -1,0 +1,25 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block main %}
+{% for error in errors %}
+    <li>{{ error }}</li>
+{% endfor %}
+{% set url = ea_url()
+    .setRoute('document_add') %}
+<a class='btn btn-success' href="{{ url }}">{% trans %}Upload file{% endtrans %}</a>
+<table class="table">
+    <tr>
+        <th>{% trans %}File{% endtrans %}</th>
+        <th>{% trans %}Actions{% endtrans %}</th>
+    </tr>
+    {% for document in documents %}
+        <tr>
+            <td><a href="{{ asset('uploads/files/' ~ document.file) }}">{{ document.name|e }}</a></td>
+            <td>
+                <a href="{{ path('document_del', {'name':document.file}) }}"><i class="fa fa-trash"></i></a>
+                <a href="{{ path('document_download', {'name':document.file}) }}"><i class="fa fa-download"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

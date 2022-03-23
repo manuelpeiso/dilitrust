@@ -1,0 +1,11 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block main %}
+<h1>{% trans %}Upload file{% endtrans %}</h1>
+{{ form_start(form) }}
+{{ form_label(form.file) }}
+{{ form_errors(form.file) }}
+{{ form_widget(form.file) }}
+<button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+{{ form_end(form) }}
+{% endblock %}

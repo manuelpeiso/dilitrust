@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="m-0 vh-100 row justify-content-center align-items-center">
+        <div class="col-auto p-5 text-center border">
+            {{ form_start(registrationForm) }}
+                <div class="row" style="margin:10px;">
+                <div style="text-align:left;">
+                    {{ form_label(registrationForm.email) }}
+                </div>
+                {{ form_errors(registrationForm.email) }}
+                {{ form_widget(registrationForm.email) }}
+                </div>
+
+                <div class="row" style="margin:10px;">
+                    <div style="text-align:left;">
+                        {{ form_label(registrationForm.plainPassword, 'Password') }}
+                    </div>
+                    {{ form_errors(registrationForm.plainPassword) }}
+                    {{ form_widget(registrationForm.plainPassword) }}
+                </div>
+
+                <div class="row" style="margin:10px;">
+                    <div style="text-align:left;">
+                        {{ form_widget(registrationForm.agreeTerms) }}
+                        {{ form_label(registrationForm.agreeTerms) }}
+                    </div>
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                </div>
+
+                <div class="row" style="margin:10px;">
+                <button type="submit" class="btn btn-success">{% trans %}Register{% endtrans %}</button>
+                </div>
+            {{ form_end(registrationForm) }}
+            <div class="row" style="float:left;margin:10px;">
+                <a href="{{ path('login') }}">{% trans %}Back to Login{% endtrans %}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

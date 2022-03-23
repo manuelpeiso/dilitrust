@@ -1,0 +1,29 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block main %}
+<h1>{{message}}</h1>
+{{ form_start(form) }}
+<div class="col-md-12" style="margin:10px;">
+    <div style="text-align:left;">
+        {{ form_label(form.email, 'Email') }}
+    </div>
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email) }}
+</div>
+<div class="col-md-12" style="margin:10px;">
+    <div style="text-align:left;">
+        {{ form_label(form.plainPassword.first) }}
+    </div>
+    {{ form_errors(form.plainPassword.first) }}
+    {{ form_widget(form.plainPassword.first) }}
+</div>
+<div class="col-md-12" style="margin:10px;">
+    <div style="text-align:left;">
+        {{ form_label(form.plainPassword.second) }}
+    </div>
+    {{ form_errors(form.plainPassword.second) }}
+    {{ form_widget(form.plainPassword.second) }}
+</div>
+<button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+{{ form_end(form) }}
+{% endblock %}

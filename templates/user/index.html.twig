@@ -1,0 +1,27 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block main %}
+
+<div class="example-wrapper">
+    {% set url = ea_url()
+        .setRoute('user_add') %}
+    <a class='btn btn-success' href="{{ url }}">{% trans %}New user{% endtrans %}</a>
+    <table class="table">
+        <tr>
+            <th>{% trans %}Email{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email|e }}</td>
+                <td>
+                    {% set url = ea_url()
+                        .setRoute('user_edit', {'id':user.id}) %}
+                    <a href="{{ url }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('user_del', {'id':user.id}) }}"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
